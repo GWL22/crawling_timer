@@ -1,12 +1,12 @@
 # Crawling_timer
 
-This is crawler on websited; [Jinair](http://www.jinair.com/), [Peach](http://www.flypeach.com/pc/kr)
+This is a crawler on websites; [Jinair](http://www.jinair.com/), [Peach](http://www.flypeach.com/pc/kr)
 
 It's wirtten for **Python 2.7.2** and used **Redis** for a database.
 
 Abstract
 ---
-This is cyclical crawler worked by **Timer.py**.
+This is a cyclical crawler worked by **Timer.py**.
 
 Description
 ---
