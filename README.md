@@ -1,6 +1,7 @@
 # Crawling_timer
 
-This is crawler on websited; [Jinair](http://www.jinair.com/), [Peach](http://www.flypeach.com/pc/kr)It
+This is crawler on websited; [Jinair](http://www.jinair.com/), [Peach](http://www.flypeach.com/pc/kr)
+
 It's wirtten for **Python 2.7.2** and used **Redis** for a database.
 
 Abstract
