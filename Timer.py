@@ -13,10 +13,10 @@ peach_crawl = PeachairCrawler()
 start_time = datetime.datetime.now()
 
 # Every Period minutes, work
-period = 1
+period = 5
 # Decide when will you finish.
-# in this case, parameter is minutes for test
-fin = 2
+# in this case, this timer is worked for 10 mins.
+fin = 10
 
 
 def functimer(period, fin):
