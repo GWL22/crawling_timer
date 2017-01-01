@@ -16,4 +16,4 @@ Description File
 - **connection.py** : In this file, you can handle server address, port, urls where you want to run crawling, and database name.
 - **JinairCrawler.py** : Crawling data on [Jinair](http://www.jinair.com/)'s main homepage.
 - **PeachairCrawler.py** : Crawling data on [Peachair](http://www.flypeach.com/pc/kr)'s main homepage.
-- **alarm_in_slack.py** : This file is for notification(New promotion and Crawler turned off) on slack. Notification channel on slack can be controled by change of **slack_hook**
+- **alarm_in_slack.py** : This file is for notification(New promotion and Crawler turned off) on slack. Notification channel on slack can be controled by change of [slack_hook](https://fc-dss3.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks)
