@@ -12,33 +12,28 @@ peach_crawl = PeachairCrawler()
 
 start_time = datetime.datetime.now()
 
-key = 60
+# Every Period minutes, work
+period = 1
+# Decide when will you finish.
+# in this case, parameter is minutes for test
+fin = 2
 
 
-class Timer(object):
-    def __init__(self, key):
-        self.key = key
+def functimer(period, fin):
+    deadline = start_time + datetime.timedelta(minutes=fin)
 
-    # For the test, count used
-    def functimer(self):
-        jin_crawl.Crawl_link()
-        peach_crawl.Crawl_link()
-        # For the test, print time
-        print str(datetime.datetime.now())
-        ########
-        timer = threading.Timer(30, self.functimer())
+    jin_crawl.Crawl_link()
+    peach_crawl.Crawl_link()
+    # For the test, print time
+    print 'start:' + str(datetime.datetime.now())
+    print 'Finish:' + str(deadline)
+    ########
+    timer = threading.Timer(period, functimer, args=[period, fin])
 
-        if datetime.datetime.now() > self.deadline():
-            print 'it\'s done'
-            timer.cancel()
-        else:
-            timer.start()
+    if datetime.datetime.now() > deadline:
+        print 'it\'s done'
+        timer.cancel()
+    else:
+        timer.start()
 
-    def deadline(self):
-        # For the test, use seconds as interval
-        deadline = start_time + datetime.timedelta(seconds=self.key)
-        print deadline
-        return deadline
-
-crawler = Timer(key)
-crawler.functimer()
+functimer(period*60, fin)

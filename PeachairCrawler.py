@@ -5,6 +5,8 @@ import requests
 
 from bs4 import BeautifulSoup
 from connection import r, url_peach, db_peach
+# This is for another Notice_system, you can cancel it by annotating
+from alarm_in_slack import alarm
 
 
 # For crawling 'a href='
@@ -32,7 +34,8 @@ class PeachairCrawler(object):
                 else:
                     # if link is not db, there is new promotion
                     if self.Check_link(a['href']):
-                        self.Notice_system(a)
+                        link, title, flag = self.Notice_system(a)
+                        alarm(link, title, flag)
 
                     # For test
                     else:
@@ -59,6 +62,15 @@ class PeachairCrawler(object):
                 return False
 
     def Notice_system(self, link):
+        link_full = link['href']
+        flag = 'PeachairCrawler'
+        title = link.get_text().encode('utf-8')
         print 'PeachairCrawler found new promotions!!'
-        print 'link: ' + link['href']
-        print 'title: ' + link.get_text().encode('utf-8')
+        print 'link: ' + link_full
+        print 'title: ' + title
+        return link_full, title, flag
+
+
+if __name__ == '__main__':
+    test = PeachairCrawler()
+    test.Crawl_link()

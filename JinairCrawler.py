@@ -5,6 +5,8 @@ import re
 
 from bs4 import BeautifulSoup
 from connection import r, url_jin, db_jin
+# This is for another Notice_system, you can cancel it by annotating
+from alarm_in_slack import alarm
 
 
 # For crawling 'a href='
@@ -26,7 +28,8 @@ class JinairCrawler(object):
         promotion_date = promotion.find_all('span', attrs={'class': 'date'})
         for link, date in zip(promotion_link, promotion_date):
             if self.Check_link(link):
-                self.Notice_system(link, date)
+                link, title, flag = self.Notice_system(link, date)
+                alarm(link, title, flag)
 
             # For test
             else:
@@ -55,9 +58,17 @@ class JinairCrawler(object):
                 return False
 
     def Notice_system(self, link, date):
+        link_full = 'http://www.jinair.com' + link['href']
         title = link.get_text().encode('utf-8')
+        flag = 'JinairCrawler'
         date = date.get_text()
         print 'JinairCrawler found new promotions!!'
         print 'title: ' + title
         print 'date: ' + date
-        print 'link: ' + 'http://www.jinair.com/' + link['href']
+        print 'link: ' + link_full
+        return link_full, title, flag
+
+
+if __name__ == '__main__':
+    test = JinairCrawler()
+    test.Crawl_link()
