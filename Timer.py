@@ -15,23 +15,20 @@ start_time = datetime.datetime.now()
 # Every Period minutes, work
 period = 5
 # Decide when will you finish.
-# in this case, this timer is worked for 10 mins.
-fin = 10
+fin = 24
 
 
 def functimer(period, fin):
-    deadline = start_time + datetime.timedelta(minutes=fin)
+    deadline = start_time + datetime.timedelta(hours=fin)
 
     jin_crawl.Crawl_link()
     peach_crawl.Crawl_link()
-    # For the test, print time
-    print 'start:' + str(datetime.datetime.now())
-    print 'Finish:' + str(deadline)
-    ########
+
+    print 'Crawler start: ' + str(datetime.datetime.now())
+
     timer = threading.Timer(period, functimer, args=[period, fin])
 
     if datetime.datetime.now() > deadline:
-        print 'it\'s done'
         timer.cancel()
         alarm_fin(deadline)
     else:

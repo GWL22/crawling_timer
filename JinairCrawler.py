@@ -20,42 +20,50 @@ class JinairCrawler(object):
 
     # Crawl links from jinair main homepage
     def Crawl_link(self):
-        res = requests.get(url_jin)
-        content = res.text
-        soup = BeautifulSoup(content, 'html.parser')
-        promotion = soup.find('div', attrs={'id': 'tabEvent'})
-        promotion_link = promotion.find_all('a')
-        promotion_date = promotion.find_all('span', attrs={'class': 'date'})
-        for link, date in zip(promotion_link, promotion_date):
-            if self.Check_link(link):
-                link, title, flag = self.Notice_system(link, date)
-                alarm(link, title, flag)
+        try:
+            res = requests.get(url_jin)
+            content = res.text
+            soup = BeautifulSoup(content, 'html.parser')
+            promotion = soup.find('div', attrs={'id': 'tabEvent'})
+            promotion_link = promotion.find_all('a')
+            promotion_date = promotion.find_all('span',
+                                                attrs={'class': 'date'})
+            for link, date in zip(promotion_link, promotion_date):
+                if self.Check_link(link):
+                    link, title, flag = self.Notice_system(link, date)
+                    alarm(link, title, flag)
 
-            # For test
-            else:
-                print 'No update'
+                else:
+                    continue
+
+        except Exception as e:
+            print 'Jinair\'s Crawl_link' + ' ' + e
 
     # Check DB and link
     def Check_link(self, link):
         dbs = r.lrange(db_jin, 0, -1)
         link = str(link['href'])
 
-        # Use for the first time
-        # If DB is empty
-        if len(dbs) == 0:
-            r.lpush(db_jin, link)
-            return True
-
-        # Check the link whether is in DB or not
-        else:
-            if link not in dbs:
+        try:
+            # Use for the first time
+            # If DB is empty
+            if len(dbs) == 0:
                 r.lpush(db_jin, link)
-                # Maintain 5 items in DB
-                # This is for more than one new promotion
-                r.ltrim(db_jin, 0, 5)
                 return True
+
+            # Check the link whether is in DB or not
             else:
-                return False
+                if link not in dbs:
+                    r.lpush(db_jin, link)
+                    # Maintain 5 items in DB
+                    # This is for more than one new promotion
+                    r.ltrim(db_jin, 0, 5)
+                    return True
+                else:
+                    return False
+
+        except Exception as e:
+            print 'Jinair\'s DB' + ' ' + e
 
     def Notice_system(self, link, date):
         link_full = 'http://www.jinair.com' + link['href']

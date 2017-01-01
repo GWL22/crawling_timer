@@ -2,9 +2,7 @@
 
 import json
 import requests
-
-# Use my private channel, you can change this url on incoming-webhook on slackAPI
-slack_hook = 'https://hooks.slack.com/services/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'
+from connection import slack_hook
 
 
 # On slack, this code makes a notification to know there is new promotion
