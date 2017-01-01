@@ -14,3 +14,4 @@ Description File
 - **connection.py** : In this file, you can handle server address, port, urls where you want to run crawling, and database name.
 - **JinairCrawler.py** : Crawling data on [Jinair](http://www.jinair.com/)'s main homepage.
 - **PeachairCrawler.py** : Crawling data on [Peach](http://www.flypeach.com/pc/kr)air's main homepage.
+- **alarm_in_slack.py** : This file is for notification on slack.
