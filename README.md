@@ -4,9 +4,11 @@ This is a crawler on websites; [Jinair](http://www.jinair.com/), [Peach](http://
 
 It's wirtten for **Python 2.7.2** and used **Redis** for a database.
 
+In addtion, Notification will be showed on slack.
+
 Abstract
 ---
-This is a cyclical crawler worked by **Timer.py**.
+This is a cyclical crawler worked by **Timer.py** with slack notification system.
 
 Description File
 ---
