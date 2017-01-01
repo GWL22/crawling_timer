@@ -10,8 +10,8 @@ This is a cyclical crawler worked by **Timer.py**.
 
 Description File
 ---
-- **Timer.py** : For the variable's value called **key**, crawler can be worked every 5 mins. In this case, crawler worked every 30 secs for 1 min.
+- **Timer.py** : For the variable's value called **key**, crawler can be worked every 5 mins. In this case, crawler worked every minute for 2 mins.
 - **connection.py** : In this file, you can handle server address, port, urls where you want to run crawling, and database name.
 - **JinairCrawler.py** : Crawling data on [Jinair](http://www.jinair.com/)'s main homepage.
 - **PeachairCrawler.py** : Crawling data on [Peach](http://www.flypeach.com/pc/kr)air's main homepage.
-- **alarm_in_slack.py** : This file is for notification on slack.
+- **alarm_in_slack.py** : This file is for notification(New promotion and Crawler turned off) on slack. Notification channel on slack can be controled by change of **slack_hook**
