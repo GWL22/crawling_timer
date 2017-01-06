@@ -37,7 +37,7 @@ class JinairCrawler(object):
                     continue
 
         except Exception as e:
-            print 'Jinair\'s Crawl_link' + ' ' + e
+            print 'Jinair\'s Crawl_link' + ' ' + str(e)
 
     # Check DB and link
     def Check_link(self, link):
@@ -63,7 +63,7 @@ class JinairCrawler(object):
                     return False
 
         except Exception as e:
-            print 'Jinair\'s DB' + ' ' + e
+            print 'Jinair\'s DB' + ' ' + str(e)
 
     def Notice_system(self, link, date):
         link_full = 'http://www.jinair.com' + link['href']

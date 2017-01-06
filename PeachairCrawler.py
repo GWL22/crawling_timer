@@ -45,7 +45,7 @@ class PeachairCrawler(object):
                     continue
 
         except Exception as e:
-            print 'Peach\'s Crawl_link' + ' ' + e
+            print 'Peach\'s Crawl_link' + ' ' + str(e)
 
     def Check_link(self, link):
         dbs = r.lrange(db_peach, 0, -1)
@@ -69,7 +69,7 @@ class PeachairCrawler(object):
                     return False
 
         except Exception as e:
-            print 'Peach\'s DB' + ' ' + e
+            print 'Peach\'s DB' + ' ' + str(e)
 
     def Notice_system(self, link):
         link_full = link['href']
