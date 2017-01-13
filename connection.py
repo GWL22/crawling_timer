@@ -4,8 +4,8 @@
 import redis
 
 # server, port should be used your server address
-server = '# add your sever address'
-port = '# add your server port'
+server = '# add your server address'
+port = '# add your port'
 r = redis.Redis(host=server, port=port)
 
 # url is where you want to crwal
@@ -17,4 +17,4 @@ db_jin = 'Jinair'
 db_peach = 'Peach'
 
 # Use my private channel, you can change this url on incoming-webhook on slackAPI
-slack_hook = 'https://hooks.slack.com/services/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'
+slack_hook = 'example) https://fc-dss3.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks'

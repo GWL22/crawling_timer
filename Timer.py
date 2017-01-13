@@ -13,13 +13,13 @@ peach_crawl = PeachairCrawler()
 start_time = datetime.datetime.now()
 
 # Every Period minutes, work
-period = 5
+period = 1
 # Decide when will you finish.
-fin = 24
+fin = 2
 
 
 def functimer(period, fin):
-    deadline = start_time + datetime.timedelta(hours=fin)
+    deadline = start_time + datetime.timedelta(minutes=fin)
 
     jin_crawl.Crawl_link()
     peach_crawl.Crawl_link()
